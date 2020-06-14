@@ -4,8 +4,10 @@ import WelcomeScreen from './welcome-screen.jsx';
 
 describe('WelcomeScreen component', () => {
   it('renders correctly', () => {
+    const emptyHandler = () => {};
+
     const component = renderer
-      .create(<WelcomeScreen errorCount={3} />)
+      .create(<WelcomeScreen errorCount={3} onStartHandler={emptyHandler} />)
       .toJSON();
 
     expect(component).toMatchSnapshot();

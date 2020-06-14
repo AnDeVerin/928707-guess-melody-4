@@ -6,6 +6,7 @@
   "scripts": {
     "eslint": "eslint --ext .jsx --ext .js src/",
     "test.jest": "jest",
+    "test.watch": "jest --watch",
     "test": "npm run eslint && npm run test.jest",
     "build": "webpack --mode production",
     "start": "webpack-dev-server"
@@ -16,6 +17,8 @@
     "@babel/preset-react": "7.10.1",
     "babel-jest": "26.0.1",
     "babel-loader": "8.1.0",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.2",
     "eslint": "5.13.0",
     "eslint-config-htmlacademy": "0.5.2",
     "eslint-config-prettier": "6.11.0",
