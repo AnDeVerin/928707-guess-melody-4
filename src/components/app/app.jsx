@@ -14,7 +14,7 @@ const App = ({ errorCount }) => {
         <Route exact path="/">
           <WelcomeScreen
             errorCount={errorCount}
-            onStartHandler={onStartHandler}
+            onWelcomeButtonClick={onStartHandler}
           />
         </Route>
         <Route exact path="/dev-artist">
@@ -30,10 +30,7 @@ const App = ({ errorCount }) => {
 
 App.propTypes = {
   errorCount: PropTypes.number,
-};
-
-App.defaultProps = {
-  errorCount: 3,
+  questions: PropTypes.array.isRequired,
 };
 
 export default App;
