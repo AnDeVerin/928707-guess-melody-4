@@ -4,7 +4,7 @@ import { GameType } from '../../const.js';
 
 import GameHeader from '../game-header/game-header.jsx';
 
-const ArtistQuestionScreen = ({ question }) => {
+const ArtistQuestionScreen = ({ question, onAnswer }) => {
   const { song, answers } = question;
 
   return (
@@ -26,18 +26,26 @@ const ArtistQuestionScreen = ({ question }) => {
         </div>
 
         <form className="game__artist">
-          {answers.map(({ picture, artist }, i) => (
-            <div className="artist" key={`answer-${i}`}>
+          {answers.map((answer, i) => (
+            <div key={answer.artist} className="artist">
               <input
                 className="artist__input visually-hidden"
                 type="radio"
                 name="answer"
-                value={`artist-${i}`}
+                value={`answer-${i}`}
                 id={`answer-${i}`}
+                onChange={(evt) => {
+                  evt.preventDefault();
+                  onAnswer(question, answer);
+                }}
               />
               <label className="artist__name" htmlFor={`answer-${i}`}>
-                <img className="artist__picture" src={picture} alt={artist} />
-                {artist}
+                <img
+                  className="artist__picture"
+                  src={answer.picture}
+                  alt={answer.artist}
+                />
+                {answer.artist}
               </label>
             </div>
           ))}
@@ -48,6 +56,7 @@ const ArtistQuestionScreen = ({ question }) => {
 };
 
 ArtistQuestionScreen.propTypes = {
+  onAnswer: PropTypes.func.isRequired,
   question: PropTypes.shape({
     type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
     song: PropTypes.shape({

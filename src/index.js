@@ -9,6 +9,6 @@ const Settings = {
 };
 
 ReactDOM.render(
-  <App errorCount={Settings.ERROR_COUNT} questions={questions} />,
+  <App errorsCount={Settings.ERRORS_COUNT} questions={questions} />,
   document.querySelector(`#root`)
 );
