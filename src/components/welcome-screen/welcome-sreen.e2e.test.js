@@ -11,7 +11,7 @@ describe('WelcomeScreen component', () => {
     const onStartMockHandler = jest.fn();
 
     const component = shallow(
-      <WelcomeScreen errorCount={3} onStartHandler={onStartMockHandler} />
+      <WelcomeScreen errorCount={3} onWelcomeButtonClick={onStartMockHandler} />
     );
 
     const startButton = component.find('.welcome__button');

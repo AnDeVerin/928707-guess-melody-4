@@ -7,7 +7,9 @@ describe('WelcomeScreen component', () => {
     const emptyHandler = () => {};
 
     const component = renderer
-      .create(<WelcomeScreen errorCount={3} onStartHandler={emptyHandler} />)
+      .create(
+        <WelcomeScreen errorsCount={3} onWelcomeButtonClick={emptyHandler} />
+      )
       .toJSON();
 
     expect(component).toMatchSnapshot();
