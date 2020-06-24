@@ -5,6 +5,8 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import WelcomeScreen from '../welcome-screen/welcome-screen.jsx';
 import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen.jsx';
 import GenreQuestionScreen from '../genre-question-screen/genre-question-screen.jsx';
+import GameScreen from '../game-screen/game-screen.jsx';
+
 import { GameType } from '../../const.js';
 
 class App extends PureComponent {
@@ -38,25 +40,29 @@ class App extends PureComponent {
       switch (question.type) {
         case GameType.ARTIST:
           return (
-            <ArtistQuestionScreen
-              question={question}
-              onAnswer={() => {
-                this.setState((prevState) => ({
-                  step: prevState.step + 1,
-                }));
-              }}
-            />
+            <GameScreen type={question.type}>
+              <ArtistQuestionScreen
+                question={question}
+                onAnswer={() => {
+                  this.setState((prevState) => ({
+                    step: prevState.step + 1,
+                  }));
+                }}
+              />
+            </GameScreen>
           );
         case GameType.GENRE:
           return (
-            <GenreQuestionScreen
-              question={question}
-              onAnswer={() => {
-                this.setState((prevState) => ({
-                  step: prevState.step + 1,
-                }));
-              }}
-            />
+            <GameScreen type={question.type}>
+              <GenreQuestionScreen
+                question={question}
+                onAnswer={() => {
+                  this.setState((prevState) => ({
+                    step: prevState.step + 1,
+                  }));
+                }}
+              />
+            </GameScreen>
           );
       }
     }
@@ -74,10 +80,20 @@ class App extends PureComponent {
             {this._renderGameScreen()}
           </Route>
           <Route exact path="/dev-artist">
-            <ArtistQuestionScreen question={questions[1]} onAnswer={() => {}} />
+            <GameScreen type={questions[1].type}>
+              <ArtistQuestionScreen
+                question={questions[1]}
+                onAnswer={() => {}}
+              />
+            </GameScreen>
           </Route>
           <Route exact path="/dev-genre">
-            <GenreQuestionScreen question={questions[0]} onAnswer={() => {}} />
+            <GameScreen type={questions[1].type}>
+              <GenreQuestionScreen
+                question={questions[0]}
+                onAnswer={() => {}}
+              />
+            </GameScreen>
           </Route>
         </Switch>
       </BrowserRouter>
