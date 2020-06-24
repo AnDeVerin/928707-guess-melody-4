@@ -6,19 +6,19 @@ export default [
     genre: `rock`,
     answers: [
       {
-        src: `https://en.wikipedia.org/wiki/File:OriginalDixielandJassBand-JazzMeBlues.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/commons/6/62/OriginalDixielandJassBand-JazzMeBlues.ogg`,
         genre: `rock`,
       },
       {
-        src: `https://en.wikipedia.org/wiki/File:DukeEllington_TakeTheATrain.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/en/b/b7/DukeEllington_TakeTheATrain.ogg`,
         genre: `blues`,
       },
       {
-        src: `https://en.wikipedia.org/wiki/File:CharlieParker_YardbirdSuite.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/en/6/60/CharlieParker_YardbirdSuite.ogg`,
         genre: `jazz`,
       },
       {
-        src: `https://en.wikipedia.org/wiki/File:JohnColtrane_MrPC.ogg`,
+        src: `https://upload.wikimedia.org/wikipedia/en/5/5d/JohnColtrane_MrPC.ogg`,
         genre: `rock`,
       },
     ],
@@ -27,7 +27,7 @@ export default [
     type: `artist`,
     song: {
       artist: `Jim Beam`,
-      src: `https://en.wikipedia.org/wiki/File:CourtneyPine_TheJazzstep.ogg`,
+      src: `https://upload.wikimedia.org/wikipedia/en/2/29/CourtneyPine_TheJazzstep.ogg`,
     },
     answers: [
       {

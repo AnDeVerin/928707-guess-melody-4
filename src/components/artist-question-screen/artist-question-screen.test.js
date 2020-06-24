@@ -27,7 +27,14 @@ const question = {
 describe('ArtistQuestionScreen component', () => {
   it(`renders correctly`, () => {
     const component = renderer
-      .create(<ArtistQuestionScreen question={question} onAnswer={() => {}} />)
+      .create(
+        <ArtistQuestionScreen question={question} onAnswer={() => {}} />,
+        {
+          createNodeMock: () => {
+            return {};
+          },
+        }
+      )
       .toJSON();
 
     expect(component).toMatchSnapshot();
