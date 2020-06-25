@@ -1,5 +1,5 @@
 import React from 'react';
-import { configure, shallow } from 'enzyme';
+import { configure, shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import AudioPlayer from './audio-player.jsx';
@@ -13,10 +13,10 @@ const mock = {
 };
 
 describe('AudioPlayer', () => {
-  it('should change button class on click', () => {
+  it('should change button class and state on click', () => {
     const { song } = mock;
 
-    const component = shallow(
+    const component = mount(
       <AudioPlayer
         isPlaying={true}
         onPlayButtonClick={jest.fn()}
@@ -25,8 +25,15 @@ describe('AudioPlayer', () => {
     );
 
     const playButton = component.find('.track__button');
-    playButton.simulate('click');
 
-    expect(playButton.hasClass('track__button--pause')).toBe(true);
+    expect(component.instance().state.isPlaying).toEqual(true);
+
+    playButton.simulate('click');
+    expect(playButton.hasClass('track__button--pause')).toEqual(true);
+    expect(component.instance().state.isPlaying).toEqual(false);
+
+    playButton.simulate('click');
+    expect(playButton.hasClass('track__button--play')).toEqual(true);
+    expect(component.instance().state.isPlaying).toEqual(true);
   });
 });
