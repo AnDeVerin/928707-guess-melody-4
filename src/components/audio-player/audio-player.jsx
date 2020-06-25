@@ -65,8 +65,8 @@ export default class AudioPlayer extends PureComponent {
           }`}
           type="button"
           disabled={isLoading}
-          onClick={(prevState) => {
-            this.setState({ isPlaying: !prevState.isPlaying });
+          onClick={() => {
+            this.setState({ isPlaying: !isPlaying });
             onPlayButtonClick();
           }}
         />

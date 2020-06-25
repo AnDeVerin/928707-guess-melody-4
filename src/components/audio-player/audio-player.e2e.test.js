@@ -1,5 +1,5 @@
 import React from 'react';
-import { configure, shallow, mount } from 'enzyme';
+import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import AudioPlayer from './audio-player.jsx';
@@ -24,16 +24,22 @@ describe('AudioPlayer', () => {
       />
     );
 
+    window.HTMLMediaElement.prototype.play = () => {};
+    window.HTMLMediaElement.prototype.pause = () => {};
+    component.instance().setState({ isLoading: false });
+
     const playButton = component.find('.track__button');
-
-    expect(component.instance().state.isPlaying).toEqual(true);
-
     playButton.simulate('click');
-    expect(playButton.hasClass('track__button--pause')).toEqual(true);
+
     expect(component.instance().state.isPlaying).toEqual(false);
+    expect(
+      component.find(`.track__button`).hasClass('track__button--play')
+    ).toBe(true);
 
     playButton.simulate('click');
-    expect(playButton.hasClass('track__button--play')).toEqual(true);
     expect(component.instance().state.isPlaying).toEqual(true);
+    expect(
+      component.find(`.track__button`).hasClass(`track__button--pause`)
+    ).toBe(true);
   });
 });
