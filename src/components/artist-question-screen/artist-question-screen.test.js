@@ -28,7 +28,11 @@ describe('ArtistQuestionScreen component', () => {
   it(`renders correctly`, () => {
     const component = renderer
       .create(
-        <ArtistQuestionScreen question={question} onAnswer={() => {}} />,
+        <ArtistQuestionScreen
+          question={question}
+          onAnswer={() => {}}
+          renderPlayer={() => {}}
+        />,
         {
           createNodeMock: () => {
             return {};
