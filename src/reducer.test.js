@@ -1,9 +1,57 @@
 import { reducer, ActionType, ActionCreator } from './reducer.js';
 
+const questions = [
+  {
+    type: `genre`,
+    genre: `rock`,
+    answers: [
+      {
+        src: `https://upload.wikimedia.org/wikipedia/commons/6/62/OriginalDixielandJassBand-JazzMeBlues.ogg`,
+        genre: `rock`,
+      },
+      {
+        src: `https://upload.wikimedia.org/wikipedia/en/b/b7/DukeEllington_TakeTheATrain.ogg`,
+        genre: `blues`,
+      },
+      {
+        src: `https://upload.wikimedia.org/wikipedia/en/6/60/CharlieParker_YardbirdSuite.ogg`,
+        genre: `jazz`,
+      },
+      {
+        src: `https://upload.wikimedia.org/wikipedia/en/5/5d/JohnColtrane_MrPC.ogg`,
+        genre: `rock`,
+      },
+    ],
+  },
+  {
+    type: `artist`,
+    song: {
+      artist: `Jim Beam`,
+      src: `https://upload.wikimedia.org/wikipedia/en/2/29/CourtneyPine_TheJazzstep.ogg`,
+    },
+    answers: [
+      {
+        picture: `https://api.adorable.io/avatars/128/A`,
+        artist: `John Snow`,
+      },
+      {
+        picture: `https://api.adorable.io/avatars/128/AB`,
+        artist: `Jack Daniels`,
+      },
+      {
+        picture: `https://api.adorable.io/avatars/128/AC`,
+        artist: `Jim Beam`,
+      },
+    ],
+  },
+];
+
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     step: -1,
     mistakes: 0,
+    maxMistakes: 3,
+    questions,
   });
 });
 
@@ -13,6 +61,7 @@ it(`Reducer should increment current step by a given value`, () => {
       {
         step: -1,
         mistakes: 0,
+        questions,
       },
       {
         type: ActionType.INCREMENT_STEP,
@@ -22,6 +71,7 @@ it(`Reducer should increment current step by a given value`, () => {
   ).toEqual({
     step: 0,
     mistakes: 0,
+    questions,
   });
 
   expect(
@@ -29,6 +79,7 @@ it(`Reducer should increment current step by a given value`, () => {
       {
         step: -1,
         mistakes: 0,
+        questions,
       },
       {
         type: ActionType.INCREMENT_STEP,
@@ -38,6 +89,7 @@ it(`Reducer should increment current step by a given value`, () => {
   ).toEqual({
     step: -1,
     mistakes: 0,
+    questions,
   });
 });
 
