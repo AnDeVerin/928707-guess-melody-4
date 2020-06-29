@@ -4,7 +4,7 @@ import GameHeader from './game-header.jsx';
 
 describe('GameHeader component', () => {
   it('renders correctly', () => {
-    const component = renderer.create(<GameHeader />).toJSON();
+    const component = renderer.create(<GameHeader mistakes={3} />).toJSON();
 
     expect(component).toMatchSnapshot();
   });
