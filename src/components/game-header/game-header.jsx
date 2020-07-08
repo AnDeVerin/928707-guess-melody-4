@@ -1,6 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const GameHeader = () => {
+import Mistakes from '../mistakes/mistakes.jsx';
+
+const GameHeader = ({ mistakes }) => {
   return (
     <header className="game__header">
       <a className="game__back" href="#">
@@ -30,13 +33,13 @@ const GameHeader = () => {
         />
       </svg>
 
-      <div className="game__mistakes">
-        <div className="wrong"></div>
-        <div className="wrong"></div>
-        <div className="wrong"></div>
-      </div>
+      <Mistakes count={mistakes} />
     </header>
   );
+};
+
+GameHeader.propTypes = {
+  mistakes: PropTypes.number.isRequired,
 };
 
 export default GameHeader;
