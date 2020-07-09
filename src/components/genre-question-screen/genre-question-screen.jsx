@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { GameType } from '../../const.js';
+import GenreQuestionItem from '../genre-question-item/genre-question-item.jsx';
 
 class GenreQuestionScreen extends PureComponent {
   render() {
@@ -25,33 +26,14 @@ class GenreQuestionScreen extends PureComponent {
           }}
         >
           {answers.map((answer, i) => (
-            <div key={`${i}-${answer.src}`} className="track">
-              {renderPlayer(answer.src, i)}
-              <div className="game__answer">
-                <input
-                  className="game__input visually-hidden"
-                  type="checkbox"
-                  name="answer"
-                  value={`answer-${i}`}
-                  id={`answer-${i}`}
-                  checked={userAnswers[i]}
-                  onChange={(evt) => {
-                    const value = evt.target.checked;
-
-                    this.setState({
-                      answers: [
-                        ...userAnswers.slice(0, i),
-                        value,
-                        ...userAnswers.slice(i + 1),
-                      ],
-                    });
-                  }}
-                />
-                <label className="game__check" htmlFor={`answer-${i}`}>
-                  Отметить
-                </label>
-              </div>
-            </div>
+            <GenreQuestionItem
+              answer={answer}
+              id={i}
+              key={`${i}-${answer.src}`}
+              onChange={onChange}
+              renderPlayer={renderPlayer}
+              userAnswer={userAnswers[i]}
+            />
           ))}
 
           <button className="game__submit button" type="submit">
@@ -65,7 +47,6 @@ class GenreQuestionScreen extends PureComponent {
 
 GenreQuestionScreen.propTypes = {
   onAnswer: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
   question: PropTypes.shape({
     answers: PropTypes.arrayOf(
       PropTypes.shape({
