@@ -111,20 +111,16 @@ class App extends PureComponent {
             {this._renderGameScreen()}
           </Route>
           <Route exact path="/dev-artist">
-            <GameScreen type={questions[1].type}>
-              <ArtistQuestionScreenWrapped
-                question={questions[1]}
-                onAnswer={() => {}}
-              />
-            </GameScreen>
+            <ArtistQuestionScreenWrapped
+              question={questions[1]}
+              onAnswer={() => {}}
+            />
           </Route>
           <Route exact path="/dev-genre">
-            <GameScreen type={questions[1].type}>
-              <GenreQuestionScreenWrapped
-                question={questions[0]}
-                onAnswer={() => {}}
-              />
-            </GameScreen>
+            <GenreQuestionScreenWrapped
+              question={questions[0]}
+              onAnswer={() => {}}
+            />
           </Route>
           <Route exact path="/dev-auth">
             <AuthScreen onReplayButtonClick={() => {}} onSubmit={() => {}} />
