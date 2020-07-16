@@ -14,6 +14,7 @@ import WinScreen from '../win-screen/win-screen.jsx';
 import GameScreen from '../game-screen/game-screen.jsx';
 import withActivePlayer from '../../hocs/with-active-player/with-active-player.js';
 import withUserAnswer from '../../hocs/with-user-answer/with-user-answer.js';
+
 import {
   getStep,
   getMistakes,
