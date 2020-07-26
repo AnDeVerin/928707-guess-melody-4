@@ -98,7 +98,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const { /* questions, mistakes,*/ resetGame, login } = this.props;
+    const { questions, mistakes, resetGame, login } = this.props;
 
     return (
       <Router history={history}>
@@ -112,6 +112,19 @@ class App extends PureComponent {
           <Route exact path={AppRoute.LOSE}>
             <GameOverScreen onReplayButtonClick={resetGame} />
           </Route>
+          <PrivateRoute
+            exact
+            path={AppRoute.RESULT}
+            render={() => {
+              return (
+                <WinScreen
+                  questionsCount={questions.length}
+                  mistakesCount={mistakes}
+                  onReplayButtonClick={resetGame}
+                />
+              );
+            }}
+          />
         </Switch>
       </Router>
     );
